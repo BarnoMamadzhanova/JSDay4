@@ -8,6 +8,7 @@ function clickBtn () {
     let y = Math.floor(Math.random()*256);
     let z = Math.floor(Math.random()*256);
     const bgColor = `rgb(${x}, ${y}, ${z})`;
+    console.log(bgColor);
     colorChange.style.backgroundColor = bgColor;
 }
 
