@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <title>Test</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row mt-5">
+            <div class="col-sm-12 col-md-10 col-lg-8 col-xl-6 my-2 mx-auto">
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" id="text" placeholder="Text">
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12 col-md-10 col-lg-8 col-xl-6 my-2 mx-auto">
+                <button class="btn btn-info" id="pressBtn">Compress</button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12 col-md-10 col-lg-8 col-xl-6 my-2 mx-auto" id="display-text">
+
+            </div>
+        </div>
+    </div>
+    <script>
+        const pressBtn = document.getElementById('pressBtn')
+        function compressText() {
+            let output = document.getElementById('text').value
+            let compressedOutput = '';
+            let count = 1;
+            for (let i = 0; i < output.length; i++) {
+                if (output[i] === output[i + 1] && i < output.length) {
+                    count++;
+                } else {
+                    compressedOutput += output[i] + (count > 1 ? count : '');
+                    count = 1;
+                }
+            }
+            const displayText = document.getElementById('display-text');
+            displayText.innerHTML = `<p class='lead display'>${compressedOutput}</p>`;
+        }
+        pressBtn.addEventListener('click', compressText)
+    </script>
+</body>
+
+</html>

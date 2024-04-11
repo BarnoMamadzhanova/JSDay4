@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <title>Test</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 col-md-10 col-lg-8 col-xl-6 my-2 mx-auto">
+                <button class="btn btn-info" id="sortBtn">Sort</button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12 col-md-10 col-lg-8 col-xl-6 my-2 mx-auto" id="display-answer">
+
+            </div>
+        </div>
+    </div>
+    <script>
+        const sortBtn = document.getElementById('sortBtn')
+
+        function checkArr() {
+            const inputArr = [1, 2, 2, 3, 3, 3];
+            const countNumber = {};
+
+            for (let el of inputArr) {
+                countNumber[el] = (countNumber[el] || 0) + 1;
+            }
+
+            const numbers = Object.values(countNumber);
+            const unNumbers = new Set(numbers);
+            return unNumbers.size === numbers.length;
+        }
+
+        sortBtn.addEventListener('click', function () {
+            const result = checkArr();
+            const displayAnswer = document.getElementById('display-answer');
+            displayAnswer.innerHTML = `<p class='lead display'>${result}</p>`;
+        });
+
+    </script>
+</body>
+
+</html>

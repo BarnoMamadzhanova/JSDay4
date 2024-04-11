@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tasks</title>
+</head>
+
+<body>
+    <script>
+        class Tasks {
+            constructor(name, description, deadline, category) {
+                this.name = name;
+                this.description = description;
+                this.deadline = deadline;
+                this.category = category;
+            }
+        }
+
+        class TaskBook {
+            constructor() {
+                this.tasks = [];
+            }
+
+            addTask(task) {
+                this.tasks.push(task);
+            }
+
+            deleteTask(taskIndex) {
+                if (taskIndex >= 0 && taskIndex < this.tasks.length) {
+                    this.tasks.splice(taskIndex, 1);
+                }
+            }
+
+            taskCategory(category) {
+                return this.tasks.filter(task => task.category === category);
+            }
+
+            taskDeadline() {
+                this.tasks.sort((a, b) => new Date(a.deadline) - new Date(b.deadline));
+            }
+        }
+
+        const task1 = new Tasks("Groceries", "Buy products for the weekend", "06.10.2023", "buy");
+        const task2 = new Tasks("Application Form", "Fill the visa application form", "07.10.2023", "document");
+        const task3 = new Tasks("Homework", "To do my homework for Monday", "07.10.2023", "do");
+        const task4 = new Tasks("Photo", "Take a photo for a visa", "08.10.2023", "document");
+        const task5 = new Tasks("Laundry", "Do the laundry", "09.10.2023", "do");
+        const task6 = new Tasks("Cleaning", "Do a general clean-up", "10.10.2023", "do");
+        const task7 = new Tasks("Shopping", "Buy waterproofs for autumn", "11.10.2023", "buy");
+        const task8 = new Tasks("Termin", "Submission of visa application documents", "12.10.2023", "document");
+        const task9 = new Tasks("Leisure", "To go to the bakery for cheesecake", "14.10.2023", "chill");
+
+        const taskBook = new TaskBook();
+        taskBook.addTask(task1);
+        taskBook.addTask(task2);
+        taskBook.addTask(task3);
+        taskBook.addTask(task4);
+        taskBook.addTask(task5);
+        taskBook.addTask(task6);
+        taskBook.addTask(task7);
+        taskBook.addTask(task8);
+        taskBook.addTask(task9);
+
+        console.log(taskBook.tasks);
+
+        taskBook.deleteTask(8);
+        console.log(taskBook.tasks);
+
+        const filteredTasks = taskBook.taskCategory("do");
+        console.log(filteredTasks);
+
+        taskBook.taskDeadline();
+        console.log(taskBook.tasks);
+    </script>
+
+</body>
+
+</html>
